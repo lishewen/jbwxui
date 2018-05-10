@@ -11,6 +11,7 @@ import { AppRoutingModule } from './/app-routing.module'
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { JobsComponent } from './jobs/jobs.component';
+import { PhoneComponent } from './phone/phone.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { JobsComponent } from './jobs/jobs.component';
     PageComponent,
     AboutComponent,
     ContactComponent,
-    JobsComponent
+    JobsComponent,
+    PhoneComponent
   ],
   imports: [
     BrowserModule,
