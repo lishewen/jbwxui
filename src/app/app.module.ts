@@ -10,13 +10,15 @@ import { PageComponent } from "./page/page.component";
 import { AppRoutingModule } from './/app-routing.module'
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { JobsComponent } from './jobs/jobs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    JobsComponent
   ],
   imports: [
     BrowserModule,
