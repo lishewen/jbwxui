@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { WeUiModule } from 'ngx-weui';
@@ -12,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { PhoneComponent } from './phone/phone.component';
+import { DispatchComponent } from './dispatch/dispatch.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import { PhoneComponent } from './phone/phone.component';
     AboutComponent,
     ContactComponent,
     JobsComponent,
-    PhoneComponent
+    PhoneComponent,
+    DispatchComponent
   ],
   imports: [
     BrowserModule,
     WeUiModule.forRoot(),
     BrowserAnimationsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
