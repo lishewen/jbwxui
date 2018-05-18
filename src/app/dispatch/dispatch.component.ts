@@ -7,7 +7,7 @@ import { DispatchService } from '../dispatch.service';
   styleUrls: ['./dispatch.component.less']
 })
 export class DispatchComponent implements OnInit {
-  list: models.调度汇总[];
+  list: models.调度汇总[] = [];
 
   constructor(private dispatchService: DispatchService) { }
 
