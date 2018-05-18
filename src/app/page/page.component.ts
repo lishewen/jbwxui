@@ -11,6 +11,9 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
     <div class="page__ft" [ngClass]="{'j_bottom': ftBottom}" *ngIf="!noBottom">
         <ng-content select="[footer]"></ng-content>
     </div>
+    <div footer class="weui-footer">
+        <p class="weui-footer__text">Copyright © 2018 梧州珍宝巴士</p>
+    </div>
     `,
     host: {
         'class': 'page'
