@@ -23,8 +23,8 @@ declare module models {
 declare module server {
     interface 首页海报 {
         id: number;
-        链接: string;
-        图片: string;
+        url: string;
+        picUrl: string;
         order: number;
     }
 }

@@ -22,8 +22,4 @@ export class IndexComponent implements OnInit {
     this.uiServuce.getHomePoster()
       .subscribe((data: Array<server.首页海报>) => this.list = data);
   }
-
-  getImageUrl(p: server.首页海报): string {
-    return 'https://images.wzjbbus.com/upload/' + p.图片;
-  }
 }
