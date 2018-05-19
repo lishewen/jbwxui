@@ -20,3 +20,11 @@ declare module models {
         is补发包: boolean;
     }
 }
+declare module server {
+    interface 首页海报 {
+        id: number;
+        链接: string;
+        图片: string;
+        order: number;
+    }
+}

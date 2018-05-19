@@ -1,3 +1,12 @@
+<weui-swiper [options]="options">
+  <div class="swiper-container swiper">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide swiper-item" *ngFor="let i of list">
+            <img src="{{getImageUrl(i)}}">
+          </div>
+      </div>
+  </div>
+</weui-swiper>
 <div class="weui-cells__title">梧州珍宝巴士(Test)</div>
 <div class="weui-cells">
   <a class="weui-cell weui-cell_access" routerLink="/about">
