@@ -1,8 +1,12 @@
+<div class="weui-cells__title">车辆位置预览(Beta)</div>
 <div class="weui-cells">
     <div class="weui-cell" *ngFor="let item of list">
         <div class="weui-cell__bd">
-            <p>{{item.onBoardid}}({{item.lineName}})</p>
+            <p>{{item.onBoardid}}({{item.name}} {{item.lineName}})</p>
         </div>
         <div class="weui-cell__ft">{{item.stationName}}</div>
     </div>
+</div>
+<div footer class="weui-footer">
+    <p class="weui-footer__text">Copyright © 2018 梧州珍宝巴士</p>
 </div>

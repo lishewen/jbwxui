@@ -15,6 +15,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { PhoneComponent } from './phone/phone.component';
 import { DispatchComponent } from './dispatch/dispatch.component';
 import { CoreModule } from './core/core.module';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CoreModule } from './core/core.module';
     ContactComponent,
     JobsComponent,
     PhoneComponent,
-    DispatchComponent
+    DispatchComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
