@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DispatchService } from '../dispatch.service';
+import { DispatchService } from './dispatch.service';
 
 @Component({
   selector: 'app-dispatch',

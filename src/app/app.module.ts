@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { PhoneComponent } from './phone/phone.component';
 import { DispatchComponent } from './dispatch/dispatch.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DispatchComponent } from './dispatch/dispatch.component';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
