@@ -16,6 +16,7 @@ import { PhoneComponent } from './phone/phone.component';
 import { DispatchComponent } from './dispatch/dispatch.component';
 import { CoreModule } from './core/core.module';
 import { IndexComponent } from './index/index.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { IndexComponent } from './index/index.component';
     JobsComponent,
     PhoneComponent,
     DispatchComponent,
-    IndexComponent
+    IndexComponent,
+    DisclaimerComponent
   ],
   imports: [
     BrowserModule,
