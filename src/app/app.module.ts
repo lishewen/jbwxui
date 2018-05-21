@@ -18,6 +18,7 @@ import { CoreModule } from './core/core.module';
 import { IndexComponent } from './index/index.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { RechargeComponent } from './recharge/recharge.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RechargeComponent } from './recharge/recharge.component';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

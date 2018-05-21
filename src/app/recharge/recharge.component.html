@@ -7,37 +7,17 @@
     </div>
   </div>
   <p class="weui-cells__title" style="padding: 10px;">温馨提示:各大银行每日单笔限额500元，建议每次充值额度不要超过500元</p>
-  <ul class="weui-cells ">
-    <li class="weui-cells_checkbox">
-      <label class="weui-cell weui-check__label" for="s1">
-        <div class="weui-cell_hd">
-        </div>
-        <div class="weui-cell_bd weui-cell_primary">支付宝</div>
-        <div class="weui-cell_ft">
-          <input type="radio" id="s1" name="checkbox1" class="weui-check">
-          <i class="weui-icon_checked"></i>
-        </div>
-      </label>
-      <label class="weui-cell weui-check__label" for="s2">
-        <div class="weui-cell_hd">
-        </div>
-        <div class="weui-cell_bd weui-cell_primary">微信</div>
-        <div class="weui-cell_ft">
-          <input type="radio" id="s2" name="checkbox1" class="weui-check">
-          <i class="weui-icon_checked"></i>
-        </div>
-      </label>
-      <label class="weui-cell weui-check__label" for="s3">
-        <div class="weui-cell_hd">
-        </div>
-        <div class="weui-cell_bd weui-cell_primary">银行卡</div>
-        <div class="weui-cell_ft">
-          <input type="radio" id="s3" name="checkbox1" class="weui-check">
-          <i class="weui-icon_checked"></i>
-        </div>
-      </label>
-    </li>
-  </ul>
+  <div class="weui-cells weui-cells_radio">
+    <label class="weui-cell weui-check__label" for="radio-{{i.id}}" *ngFor="let i of radio">
+      <div class="weui-cell__bd">
+        <p>{{i.name}}</p>
+      </div>
+      <div class="weui-cell__ft">
+        <input type="radio" class="weui-check" [(ngModel)]="res.radio" name="radio1" [value]="i" id="radio-{{i.id}}">
+        <span class="weui-icon-checked"></span>
+      </div>
+    </label>
+  </div>
   <div style="margin-top:1em">
     <a class="weui-btn weui-btn_primary" (click)="okClick()">确定</a>
   </div>
