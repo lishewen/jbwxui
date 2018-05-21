@@ -8,6 +8,7 @@ import { PhoneComponent } from './phone/phone.component';
 import { DispatchComponent } from './dispatch/dispatch.component';
 import { IndexComponent } from './index/index.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { RechargeComponent } from './recharge/recharge.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent, pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'phone', component: PhoneComponent },
   { path: 'dispatch', component: DispatchComponent },
   { path: 'disclaimer', component: DisclaimerComponent },
+  { path: 'recharge', component: RechargeComponent }
 ];
 
 @NgModule({
