@@ -7,30 +7,19 @@ import { WeUiModule } from 'ngx-weui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { PageComponent } from "./page/page.component";
-import { AppRoutingModule } from './/app-routing.module'
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { JobsComponent } from './jobs/jobs.component';
-import { PhoneComponent } from './phone/phone.component';
+import { AppRoutingModule } from './app-routing.module'
 import { DispatchComponent } from './dispatch/dispatch.component';
 import { CoreModule } from './core/core.module';
 import { IndexComponent } from './index/index.component';
-import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { RechargeComponent } from './recharge/recharge.component';
 import { FormsModule } from '@angular/forms';
+import { PageModule } from './page/page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageComponent,
-    AboutComponent,
-    ContactComponent,
-    JobsComponent,
-    PhoneComponent,
     DispatchComponent,
     IndexComponent,
-    DisclaimerComponent,
     RechargeComponent
   ],
   imports: [
@@ -41,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    PageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
