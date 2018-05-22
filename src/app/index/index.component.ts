@@ -13,7 +13,9 @@ export class IndexComponent implements OnInit {
       delay: 3000,
       stopOnLastSlide: false,
       disableOnInteraction: true,
-    }
+    },
+    observeParents: true,
+    observer: true
   };
 
   constructor(private uiServuce: UiService) { }
