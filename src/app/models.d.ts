@@ -1,4 +1,4 @@
-declare module models {
+declare namespace models {
     export interface 调度汇总 {
         name: string;
         stationName: string;
@@ -19,8 +19,13 @@ declare module models {
         direction: number;
         is补发包: boolean;
     }
+    export interface OAuthAccessTokenResult {
+        access_token: string;
+        openid: string;
+        errcode: number;
+    }
 }
-declare module server {
+declare namespace server {
     interface 首页海报 {
         id: number;
         url: string;

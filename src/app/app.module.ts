@@ -14,13 +14,16 @@ import { IndexComponent } from './index/index.component';
 import { RechargeComponent } from './recharge/recharge.component';
 import { FormsModule } from '@angular/forms';
 import { PageModule } from './page/page.module';
+import { RestDataSource } from './auth/rest-data-source';
+import { WxauthComponent } from './wxauth/wxauth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DispatchComponent,
     IndexComponent,
-    RechargeComponent
+    RechargeComponent,
+    WxauthComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { PageModule } from './page/page.module';
     FormsModule,
     PageModule
   ],
-  providers: [],
+  providers: [RestDataSource],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
