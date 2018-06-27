@@ -25,7 +25,12 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.json"
+              "src/manifest.json",
+              {
+                "glob": "ngsw-worker-polyfill.js",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "./node_modules/swiper/dist/css/swiper.css",
@@ -90,7 +95,12 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.json"
+              "src/manifest.json",
+              {
+                "glob": "ngsw-worker-polyfill.js",
+                "input": "src",
+                "output": "/"
+              }
             ]
           }
         },

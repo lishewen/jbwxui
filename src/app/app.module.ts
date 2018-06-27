@@ -29,7 +29,7 @@ import { WxauthComponent } from './wxauth/wxauth.component';
     BrowserModule,
     WeUiModule.forRoot(),
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/ngsw-worker-polyfill.js', { enabled: environment.production }),
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
