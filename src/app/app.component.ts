@@ -16,7 +16,8 @@ export class AppComponent {
 
   private subscribeToEvents(): void {
     this.signalRService.messageReceived.subscribe((message: models.ChatMessage) => {
-      this.srv['warn'](message.message);
+      if (message.message != null && message.message != '')
+        this.srv['warn'](message.message);
     });
   }
 }
