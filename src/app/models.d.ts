@@ -24,6 +24,10 @@ declare namespace models {
         openid: string;
         errcode: number;
     }
+    export interface ChatMessage {
+        sent: Date;
+        message: string
+    }
 }
 declare namespace server {
     interface 首页海报 {
