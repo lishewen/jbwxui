@@ -343,7 +343,7 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-    var __awaiter$2 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
             function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -390,7 +390,7 @@
                 this.adapter.parseUrl(this.scope.registration.scope, this.scope.registration.scope).origin;
         }
         cacheStatus(url) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 const cache = yield this.cache;
                 const meta = yield this.metadata;
                 const res = yield cache.match(this.adapter.newRequest(url));
@@ -413,7 +413,7 @@
          * Clean up all the cached data for this group.
          */
         cleanup() {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 yield this.scope.caches.delete(`${this.prefix}:${this.config.name}:cache`);
                 yield this.db.delete(`${this.prefix}:${this.config.name}:meta`);
             });
@@ -422,7 +422,7 @@
          * Process a request for a given resource and return it, or return null if it's not available.
          */
         handleFetch(req, ctx) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 const url = this.getConfigUrl(req.url);
                 // Either the request matches one of the known resource URLs, one of the patterns for
                 // dynamically matched URLs, or neither. Determine which is the case for this request in
@@ -447,7 +447,7 @@
                             // This resource has no hash, and yet exists in the cache. Check how old this request is
                             // to make sure it's still usable.
                             if (yield this.needToRevalidate(req, cachedResponse)) {
-                                this.idle.schedule(`revalidate(${this.prefix}, ${this.config.name}): ${req.url}`, () => __awaiter$2(this, void 0, void 0, function* () { yield this.fetchAndCacheOnce(req); }));
+                                this.idle.schedule(`revalidate(${this.prefix}, ${this.config.name}): ${req.url}`, () => __awaiter(this, void 0, void 0, function* () { yield this.fetchAndCacheOnce(req); }));
                             }
                             // In either case (revalidation or not), the cached response must be good.
                             return cachedResponse;
@@ -484,7 +484,7 @@
          * per the caching headers.
          */
         needToRevalidate(req, res) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 // Three different strategies apply here:
                 // 1) The request has a Cache-Control header, and thus expiration needs to be based on its age.
                 // 2) The request has an Expires header, and expiration is based on the current timestamp.
@@ -557,7 +557,7 @@
          * Fetch the complete state of a cached resource, or return null if it's not found.
          */
         fetchFromCacheOnly(url) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 const cache = yield this.cache;
                 const metaTable = yield this.metadata;
                 // Lookup the response in the cache.
@@ -582,7 +582,7 @@
          * Lookup all resources currently stored in the cache which have no associated hash.
          */
         unhashedResources() {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 const cache = yield this.cache;
                 // Start with the set of all cached URLs.
                 return (yield cache.keys())
@@ -594,7 +594,7 @@
          * Fetch the given resource from the network, and cache it if able.
          */
         fetchAndCacheOnce(req, used = true) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 // The `inFlightRequests` map holds information about which caching operations are currently
                 // underway for known resources. If this request appears there, another "thread" is already
                 // in the process of caching it, and this work should not be duplicated.
@@ -641,7 +641,7 @@
             });
         }
         fetchFromNetwork(req, redirectLimit = 3) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 // Make a cache-busted request for the resource.
                 const res = yield this.cacheBustedFetchFromNetwork(req);
                 // Check for redirected responses, and follow the redirects.
@@ -660,7 +660,7 @@
          * Load a particular asset from the network, accounting for hash validation.
          */
         cacheBustedFetchFromNetwork(req) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 const url = this.getConfigUrl(req.url);
                 // If a hash is available for this resource, then compare the fetched version with the
                 // canonical hash. Otherwise, the network version will have to be trusted.
@@ -730,7 +730,7 @@
          * Possibly update a resource, if it's expired and needs to be updated. A no-op otherwise.
          */
         maybeUpdate(updateFrom, req, cache) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 const url = this.getConfigUrl(req.url);
                 const meta = yield this.metadata;
                 // Check if this resource is hashed and already exists in the cache of a prior version.
@@ -759,7 +759,7 @@
             return url + (url.indexOf('?') === -1 ? '?' : '&') + 'ngsw-cache-bust=' + Math.random();
         }
         safeFetch(req) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 try {
                     return yield this.scope.fetch(req);
                 }
@@ -777,13 +777,13 @@
      */
     class PrefetchAssetGroup extends AssetGroup {
         initializeFully(updateFrom) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 // Open the cache which actually holds requests.
                 const cache = yield this.cache;
                 // Cache all known resources serially. As this reduce proceeds, each Promise waits
                 // on the last before starting the fetch/cache operation for the next request. Any
                 // errors cause fall-through to the final Promise which rejects.
-                yield this.config.urls.reduce((previous, url) => __awaiter$2(this, void 0, void 0, function* () {
+                yield this.config.urls.reduce((previous, url) => __awaiter(this, void 0, void 0, function* () {
                     // Wait on all previous operations to complete.
                     yield previous;
                     // Construct the Request for this url.
@@ -809,34 +809,34 @@
                     // from previous versions of the app, in any asset group.
                     yield (yield updateFrom.previouslyCachedResources())
                         .filter(url => this.config.urls.some(cacheUrl => cacheUrl === url) ||
-                            this.patterns.some(pattern => pattern.test(url)))
-                        .reduce((previous, url) => __awaiter$2(this, void 0, void 0, function* () {
-                            yield previous;
-                            const req = this.adapter.newRequest(url);
-                            // It's possible that the resource in question is already cached. If so,
-                            // continue to the next one.
-                            const alreadyCached = ((yield cache.match(req)) !== undefined);
-                            if (alreadyCached) {
-                                return;
-                            }
-                            // Get the most recent old version of the resource.
-                            const res = yield updateFrom.lookupResourceWithoutHash(url);
-                            if (res === null || res.metadata === undefined) {
-                                // Unexpected, but not harmful.
-                                return;
-                            }
-                            // Write it into the cache. It may already be expired, but it can still serve
-                            // traffic until it's updated (stale-while-revalidate approach).
-                            yield cache.put(req, res.response);
-                            yield metaTable.write(url, Object.assign({}, res.metadata, { used: false }));
-                        }), Promise.resolve());
+                        this.patterns.some(pattern => pattern.test(url)))
+                        .reduce((previous, url) => __awaiter(this, void 0, void 0, function* () {
+                        yield previous;
+                        const req = this.adapter.newRequest(url);
+                        // It's possible that the resource in question is already cached. If so,
+                        // continue to the next one.
+                        const alreadyCached = ((yield cache.match(req)) !== undefined);
+                        if (alreadyCached) {
+                            return;
+                        }
+                        // Get the most recent old version of the resource.
+                        const res = yield updateFrom.lookupResourceWithoutHash(url);
+                        if (res === null || res.metadata === undefined) {
+                            // Unexpected, but not harmful.
+                            return;
+                        }
+                        // Write it into the cache. It may already be expired, but it can still serve
+                        // traffic until it's updated (stale-while-revalidate approach).
+                        yield cache.put(req, res.response);
+                        yield metaTable.write(url, Object.assign({}, res.metadata, { used: false }));
+                    }), Promise.resolve());
                 }
             });
         }
     }
     class LazyAssetGroup extends AssetGroup {
         initializeFully(updateFrom) {
-            return __awaiter$2(this, void 0, void 0, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 // No action necessary if no update source is available - resources managed in this group
                 // are all lazily loaded, so there's nothing to initialize.
                 if (updateFrom === undefined) {
@@ -845,7 +845,7 @@
                 // Open the cache which actually holds requests.
                 const cache = yield this.cache;
                 // Loop through the listed resources, caching any which are available.
-                yield this.config.urls.reduce((previous, url) => __awaiter$2(this, void 0, void 0, function* () {
+                yield this.config.urls.reduce((previous, url) => __awaiter(this, void 0, void 0, function* () {
                     // Wait on all previous operations to complete.
                     yield previous;
                     // Construct the Request for this url.
@@ -884,7 +884,7 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-    var __awaiter$3 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    var __awaiter$1 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
             function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -1038,7 +1038,7 @@
          * Lazily initialize/load the LRU chain.
          */
         lru() {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 if (this._lru === null) {
                     const table = yield this.lruTable;
                     try {
@@ -1055,7 +1055,7 @@
          * Sync the LRU chain to non-volatile storage.
          */
         syncLru() {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 if (this._lru === null) {
                     return;
                 }
@@ -1068,7 +1068,7 @@
          * or `null` otherwise.
          */
         handleFetch(req, ctx) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 // Do nothing
                 if (!this.patterns.some(pattern => pattern.test(req.url))) {
                     return null;
@@ -1107,7 +1107,7 @@
             });
         }
         handleFetchWithPerformance(req, ctx, lru) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 let res = null;
                 // Check the cache first. If the resource exists there (and is not expired), the cached
                 // version can be used.
@@ -1139,7 +1139,7 @@
             });
         }
         handleFetchWithFreshness(req, ctx, lru) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 // Start with a network fetch.
                 const [timeoutFetch, networkFetch] = this.networkFetchWithTimeout(req);
                 let res;
@@ -1177,7 +1177,7 @@
             // Otherwise, just fetch from the network directly.
             if (this.config.timeoutMs !== undefined) {
                 const networkFetch = this.scope.fetch(req);
-                const safeNetworkFetch = (() => __awaiter$3(this, void 0, void 0, function* () {
+                const safeNetworkFetch = (() => __awaiter$1(this, void 0, void 0, function* () {
                     try {
                         return yield networkFetch;
                     }
@@ -1188,7 +1188,7 @@
                         });
                     }
                 }))();
-                const networkFetchUndefinedError = (() => __awaiter$3(this, void 0, void 0, function* () {
+                const networkFetchUndefinedError = (() => __awaiter$1(this, void 0, void 0, function* () {
                     try {
                         return yield networkFetch;
                     }
@@ -1209,7 +1209,7 @@
             }
         }
         safeCacheResponse(req, res) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 try {
                     yield this.cacheResponse(req, yield res, yield this.lru());
                 }
@@ -1219,7 +1219,7 @@
             });
         }
         loadFromCache(req, lru) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 // Look for a response in the cache. If one exists, return it.
                 const cache = yield this.cache;
                 let res = yield cache.match(req);
@@ -1256,7 +1256,7 @@
          * request will still be running in the background, to be cached when it completes.
          */
         cacheResponse(req, res, lru, okToCacheOpaque = false) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 // Only cache successful responses.
                 if (!res.ok || (okToCacheOpaque && res.type === 'opaque')) {
                     return;
@@ -1288,7 +1288,7 @@
          * Delete all of the saved state which this group uses to track resources.
          */
         cleanup() {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 // Remove both the cache and the database entries which track LRU stats.
                 yield Promise.all([
                     this.scope.caches.delete(`${this.prefix}:dynamic:${this.config.name}:cache`),
@@ -1305,7 +1305,7 @@
          * the cache itself, as well as the metadata stored in the age table.
          */
         clearCacheForUrl(url) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 const [cache, ageTable] = yield Promise.all([this.cache, this.ageTable]);
                 yield Promise.all([
                     cache.delete(this.adapter.newRequest(url, { method: 'GET' })),
@@ -1315,7 +1315,7 @@
             });
         }
         safeFetch(req) {
-            return __awaiter$3(this, void 0, void 0, function* () {
+            return __awaiter$1(this, void 0, void 0, function* () {
                 try {
                     return this.scope.fetch(req);
                 }
@@ -1336,7 +1336,7 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-    var __awaiter$1 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    var __awaiter$2 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
             function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -1405,12 +1405,12 @@
          * data has been safely downloaded.
          */
         initializeFully(updateFrom) {
-            return __awaiter$1(this, void 0, void 0, function* () {
+            return __awaiter$2(this, void 0, void 0, function* () {
                 try {
                     // Fully initialize each asset group, in series. Starts with an empty Promise,
                     // and waits for the previous groups to have been initialized before initializing
                     // the next one in turn.
-                    yield this.assetGroups.reduce((previous, group) => __awaiter$1(this, void 0, void 0, function* () {
+                    yield this.assetGroups.reduce((previous, group) => __awaiter$2(this, void 0, void 0, function* () {
                         // Wait for the previous groups to complete initialization. If there is a
                         // failure, this will throw, and each subsequent group will throw, until the
                         // whole sequence fails.
@@ -1426,7 +1426,7 @@
             });
         }
         handleFetch(req, context) {
-            return __awaiter$1(this, void 0, void 0, function* () {
+            return __awaiter$2(this, void 0, void 0, function* () {
                 // Check the request against each `AssetGroup` in sequence. If an `AssetGroup` can't handle the
                 // request,
                 // it will return `null`. Thus, the first non-null response is the SW's answer to the request.
@@ -1434,7 +1434,7 @@
                 // the group list, keeping track of a possible response. If there is one, it gets passed
                 // through, and if
                 // not the next group is consulted to produce a candidate response.
-                const asset = yield this.assetGroups.reduce((potentialResponse, group) => __awaiter$1(this, void 0, void 0, function* () {
+                const asset = yield this.assetGroups.reduce((potentialResponse, group) => __awaiter$2(this, void 0, void 0, function* () {
                     // Wait on the previous potential response. If it's not null, it should just be passed
                     // through.
                     const resp = yield potentialResponse;
@@ -1452,7 +1452,7 @@
                 }
                 // Perform the same reduction operation as above, but this time processing
                 // the data caching groups.
-                const data = yield this.dataGroups.reduce((potentialResponse, group) => __awaiter$1(this, void 0, void 0, function* () {
+                const data = yield this.dataGroups.reduce((potentialResponse, group) => __awaiter$2(this, void 0, void 0, function* () {
                     const resp = yield potentialResponse;
                     if (resp !== null) {
                         return resp;
@@ -1494,8 +1494,7 @@
          * Check this version for a given resource with a particular hash.
          */
         lookupResourceWithHash(url, hash) {
-            return __awaiter$1(this, void 0, void 0, function* () {
-                const req = this.adapter.newRequest(url);
+            return __awaiter$2(this, void 0, void 0, function* () {
                 // Verify that this version has the requested resource cached. If not,
                 // there's no point in trying.
                 if (!this.hashTable.has(url)) {
@@ -1506,12 +1505,8 @@
                 if (this.hashTable.get(url) !== hash) {
                     return null;
                 }
-                // TODO: no-op context and appropriate contract. Currently this is a violation
-                // of the typings and could cause issues if handleFetch() has side effects. A
-                // better strategy to deal with side effects is needed.
-                // TODO: this could result in network fetches if the response is lazy. Refactor
-                // to avoid them.
-                return this.handleFetch(req, null);
+                const cacheState = yield this.lookupResourceWithoutHash(url);
+                return cacheState && cacheState.response;
             });
         }
         /**
@@ -1520,7 +1515,7 @@
         lookupResourceWithoutHash(url) {
             // Limit the search to asset groups, and only scan the cache, don't
             // load resources from the network.
-            return this.assetGroups.reduce((potentialResponse, group) => __awaiter$1(this, void 0, void 0, function* () {
+            return this.assetGroups.reduce((potentialResponse, group) => __awaiter$2(this, void 0, void 0, function* () {
                 const resp = yield potentialResponse;
                 if (resp !== null) {
                     return resp;
@@ -1534,13 +1529,13 @@
          * List all unhashed resources from all asset groups.
          */
         previouslyCachedResources() {
-            return this.assetGroups.reduce((resources, group) => __awaiter$1(this, void 0, void 0, function* () {
+            return this.assetGroups.reduce((resources, group) => __awaiter$2(this, void 0, void 0, function* () {
                 return (yield resources).concat(yield group.unhashedResources());
             }), Promise.resolve([]));
         }
         recentCacheStatus(url) {
-            return __awaiter$1(this, void 0, void 0, function* () {
-                return this.assetGroups.reduce((current, group) => __awaiter$1(this, void 0, void 0, function* () {
+            return __awaiter$2(this, void 0, void 0, function* () {
+                return this.assetGroups.reduce((current, group) => __awaiter$2(this, void 0, void 0, function* () {
                     const status = yield current;
                     if (status === UpdateCacheStatus.CACHED) {
                         return status;
@@ -1557,7 +1552,7 @@
          * Erase this application version, by cleaning up all the caches.
          */
         cleanup() {
-            return __awaiter$1(this, void 0, void 0, function* () {
+            return __awaiter$2(this, void 0, void 0, function* () {
                 yield Promise.all(this.assetGroups.map(group => group.cleanup()));
                 yield Promise.all(this.dataGroups.map(group => group.cleanup()));
             });
@@ -1586,7 +1581,7 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-    var __awaiter$4 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    var __awaiter$3 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
             function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -1608,37 +1603,37 @@
             this.debugLogB = [];
         }
         handleFetch(req) {
-            return __awaiter$4(this, void 0, void 0, function* () {
+            return __awaiter$3(this, void 0, void 0, function* () {
                 const [state, versions, idle] = yield Promise.all([
                     this.driver.debugState(),
                     this.driver.debugVersions(),
                     this.driver.debugIdleState(),
                 ]);
                 const msgState = `NGSW Debug Info:
-    
-    Driver state: ${state.state} (${state.why})
-    Latest manifest hash: ${state.latestHash || 'none'}
-    Last update check: ${this.since(state.lastUpdateCheck)}`;
+
+Driver state: ${state.state} (${state.why})
+Latest manifest hash: ${state.latestHash || 'none'}
+Last update check: ${this.since(state.lastUpdateCheck)}`;
                 const msgVersions = versions
                     .map(version => `=== Version ${version.hash} ===
-    
-    Clients: ${version.clients.join(', ')}`)
+
+Clients: ${version.clients.join(', ')}`)
                     .join('\n\n');
                 const msgIdle = `=== Idle Task Queue ===
-    Last update tick: ${this.since(idle.lastTrigger)}
-    Last update run: ${this.since(idle.lastRun)}
-    Task queue:
-    ${idle.queue.map(v => ' * ' + v).join('\n')}
-    
-    Debug log:
-    ${this.formatDebugLog(this.debugLogB)}
-    ${this.formatDebugLog(this.debugLogA)}
-    `;
+Last update tick: ${this.since(idle.lastTrigger)}
+Last update run: ${this.since(idle.lastRun)}
+Task queue:
+${idle.queue.map(v => ' * ' + v).join('\n')}
+
+Debug log:
+${this.formatDebugLog(this.debugLogB)}
+${this.formatDebugLog(this.debugLogA)}
+`;
                 return this.adapter.newResponse(`${msgState}
-    
-    ${msgVersions}
-    
-    ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }) });
+
+${msgVersions}
+
+${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }) });
             });
         }
         since(time) {
@@ -1685,7 +1680,7 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-    var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    var __awaiter$4 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
             function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -1706,7 +1701,7 @@
             this.lastRun = null;
         }
         trigger() {
-            return __awaiter$5(this, void 0, void 0, function* () {
+            return __awaiter$4(this, void 0, void 0, function* () {
                 this.lastTrigger = this.adapter.time;
                 if (this.queue.length === 0) {
                     return;
@@ -1727,12 +1722,12 @@
             });
         }
         execute() {
-            return __awaiter$5(this, void 0, void 0, function* () {
+            return __awaiter$4(this, void 0, void 0, function* () {
                 this.lastRun = this.adapter.time;
                 while (this.queue.length > 0) {
                     const queue = this.queue;
                     this.queue = [];
-                    yield queue.reduce((previous, task) => __awaiter$5(this, void 0, void 0, function* () {
+                    yield queue.reduce((previous, task) => __awaiter$4(this, void 0, void 0, function* () {
                         yield previous;
                         try {
                             yield task.run();
@@ -1791,7 +1786,7 @@
      * Use of this source code is governed by an MIT-style license that can be
      * found in the LICENSE file at https://angular.io/license
      */
-    var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
             function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -1960,15 +1955,19 @@
             // Initialization is the only event which is sent directly from the SW to itself,
             // and thus `event.source` is not a Client. Handle it here, before the check
             // for Client sources.
-            if (data.action === 'INITIALIZE' && this.initialized === null) {
-                // Initialize the SW.
-                this.initialized = this.initialize();
-                // Wait until initialization is properly scheduled, then trigger idle
-                // events to allow it to complete (assuming the SW is idle).
-                event.waitUntil((() => __awaiter(this, void 0, void 0, function* () {
-                    yield this.initialized;
-                    yield this.idle.trigger();
-                }))());
+            if (data.action === 'INITIALIZE') {
+                // Only initialize if not already initialized (or initializing).
+                if (this.initialized === null) {
+                    // Initialize the SW.
+                    this.initialized = this.initialize();
+                    // Wait until initialization is properly scheduled, then trigger idle
+                    // events to allow it to complete (assuming the SW is idle).
+                    event.waitUntil((() => __awaiter$5(this, void 0, void 0, function* () {
+                        yield this.initialized;
+                        yield this.idle.trigger();
+                    }))());
+                }
+                return;
             }
             // Only messages from true clients are accepted past this point (this is essentially
             // a typecast).
@@ -1987,9 +1986,9 @@
             msg.waitUntil(this.handlePush(msg.data.json()));
         }
         handleMessage(msg, from) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 if (isMsgCheckForUpdates(msg)) {
-                    const action = (() => __awaiter(this, void 0, void 0, function* () { yield this.checkForUpdate(); }))();
+                    const action = (() => __awaiter$5(this, void 0, void 0, function* () { yield this.checkForUpdate(); }))();
                     yield this.reportStatus(from, action, msg.statusNonce);
                 }
                 else if (isMsgActivateUpdate(msg)) {
@@ -1998,7 +1997,7 @@
             });
         }
         handlePush(data) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 yield this.broadcast({
                     type: 'PUSH',
                     data,
@@ -2014,7 +2013,7 @@
             });
         }
         reportStatus(client, promise, nonce) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 const response = { type: 'STATUS', nonce, status: true };
                 try {
                     yield promise;
@@ -2026,7 +2025,7 @@
             });
         }
         updateClient(client) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // Figure out which version the client is on. If it's not on the latest,
                 // it needs to be moved.
                 const existing = this.clientVersionMap.get(client.id);
@@ -2056,7 +2055,7 @@
             });
         }
         handleFetch(event) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // Since the SW may have just been started, it may or may not have been initialized already.
                 // this.initialized will be `null` if initialization has not yet been attempted, or will be a
                 // Promise which will resolve (successfully or unsuccessfully) if it has.
@@ -2084,7 +2083,7 @@
                 // On navigation requests, check for new updates.
                 if (event.request.mode === 'navigate' && !this.scheduledNavUpdateCheck) {
                     this.scheduledNavUpdateCheck = true;
-                    this.idle.schedule('check-updates-on-navigation', () => __awaiter(this, void 0, void 0, function* () {
+                    this.idle.schedule('check-updates-on-navigation', () => __awaiter$5(this, void 0, void 0, function* () {
                         this.scheduledNavUpdateCheck = false;
                         yield this.checkForUpdate();
                     }));
@@ -2131,7 +2130,7 @@
          * Attempt to quickly reach a state where it's safe to serve responses.
          */
         initialize() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // On initialization, all of the serialized state is read out of the 'control'
                 // table. This includes:
                 // - map of hashes to manifests of currently loaded application versions
@@ -2155,7 +2154,7 @@
                     ]);
                     // Successfully loaded from saved state. This implies a manifest exists, so
                     // the update check needs to happen in the background.
-                    this.idle.schedule('init post-load (update, cleanup)', () => __awaiter(this, void 0, void 0, function* () {
+                    this.idle.schedule('init post-load (update, cleanup)', () => __awaiter$5(this, void 0, void 0, function* () {
                         yield this.checkForUpdate();
                         try {
                             yield this.cleanupCaches();
@@ -2220,7 +2219,7 @@
                 // full initialization.
                 // If any of these initializations fail, versionFailed() will be called either
                 // synchronously or asynchronously to handle the failure and re-map clients.
-                yield Promise.all(Object.keys(manifests).map((hash) => __awaiter(this, void 0, void 0, function* () {
+                yield Promise.all(Object.keys(manifests).map((hash) => __awaiter$5(this, void 0, void 0, function* () {
                     try {
                         // Attempt to schedule or initialize this version. If this operation is
                         // successful, then initialization either succeeded or was scheduled. If
@@ -2245,7 +2244,7 @@
          * Decide which version of the manifest to use for the event.
          */
         assignVersion(event) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // First, check whether the event has a (non empty) client ID. If it does, the version may
                 // already be associated.
                 const clientId = event.clientId;
@@ -2325,7 +2324,7 @@
             });
         }
         fetchLatestManifest(ignoreOfflineError = false) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 const res = yield this.safeFetch(this.adapter.newRequest('ngsw.json?ngsw-cache-bust=' + Math.random()));
                 if (!res.ok) {
                     if (res.status === 404) {
@@ -2342,15 +2341,15 @@
             });
         }
         deleteAllCaches() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 yield (yield this.scope.caches.keys())
                     .filter(key => key.startsWith('ngsw:'))
-                    .reduce((previous, key) => __awaiter(this, void 0, void 0, function* () {
-                        yield Promise.all([
-                            previous,
-                            this.scope.caches.delete(key),
-                        ]);
-                    }), Promise.resolve());
+                    .reduce((previous, key) => __awaiter$5(this, void 0, void 0, function* () {
+                    yield Promise.all([
+                        previous,
+                        this.scope.caches.delete(key),
+                    ]);
+                }), Promise.resolve());
             });
         }
         /**
@@ -2359,8 +2358,8 @@
          * awaited, as under some conditions the AppVersion might be initialized immediately.
          */
         scheduleInitialization(appVersion, latest) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const initialize = () => __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
+                const initialize = () => __awaiter$5(this, void 0, void 0, function* () {
                     try {
                         yield appVersion.initializeFully();
                     }
@@ -2377,7 +2376,7 @@
             });
         }
         versionFailed(appVersion, err, latest) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // This particular AppVersion is broken. First, find the manifest hash.
                 const broken = Array.from(this.versions.entries()).find(([hash, version]) => version === appVersion);
                 if (broken === undefined) {
@@ -2411,16 +2410,8 @@
             });
         }
         setupUpdate(manifest, hash) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 const newVersion = new AppVersion(this.scope, this.adapter, this.db, this.idle, manifest, hash);
-                // Try to determine a version that's safe to update from.
-                let updateFrom = undefined;
-                // It's always safe to update from a version, even a broken one, as it will still
-                // only have valid resources cached. If there is no latest version, though, this
-                // update will have to install as a fresh version.
-                if (this.latestHash !== null) {
-                    updateFrom = this.versions.get(this.latestHash);
-                }
                 // Firstly, check if the manifest version is correct.
                 if (manifest.configVersion !== SUPPORTED_CONFIG_VERSION) {
                     yield this.deleteAllCaches();
@@ -2439,7 +2430,7 @@
             });
         }
         checkForUpdate() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 let hash = '(unknown)';
                 try {
                     const manifest = yield this.fetchLatestManifest(true);
@@ -2469,7 +2460,7 @@
          * Synchronize the existing state to the underlying database.
          */
         sync() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // Open up the DB table.
                 const table = yield this.db.open('control');
                 // Construct a serializable map of hashes to manifests.
@@ -2492,7 +2483,7 @@
             });
         }
         cleanupCaches() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // Query for all currently active clients, and list the client ids. This may skip
                 // some clients in the browser back-forward cache, but not much can be done about
                 // that.
@@ -2512,7 +2503,7 @@
                 const obsoleteVersions = Array.from(this.versions.keys())
                     .filter(version => !usedVersions.has(version) && version !== this.latestHash);
                 // Remove all the versions which are no longer used.
-                yield obsoleteVersions.reduce((previous, version) => __awaiter(this, void 0, void 0, function* () {
+                yield obsoleteVersions.reduce((previous, version) => __awaiter$5(this, void 0, void 0, function* () {
                     // Wait for the other cleanup operations to complete.
                     yield previous;
                     // Try to get past the failure of one particular version to clean up (this
@@ -2542,25 +2533,25 @@
         lookupResourceWithHash(url, hash) {
             return Array
                 .from(this.versions.values())
-                .reduce((prev, version) => __awaiter(this, void 0, void 0, function* () {
-                    // First, check the previous result. If a non-null result has been found already, just
-                    // return it.
-                    if ((yield prev) !== null) {
-                        return prev;
-                    }
-                    // No result has been found yet. Try the next `AppVersion`.
-                    return version.lookupResourceWithHash(url, hash);
-                }), Promise.resolve(null));
+                .reduce((prev, version) => __awaiter$5(this, void 0, void 0, function* () {
+                // First, check the previous result. If a non-null result has been found already, just
+                // return it.
+                if ((yield prev) !== null) {
+                    return prev;
+                }
+                // No result has been found yet. Try the next `AppVersion`.
+                return version.lookupResourceWithHash(url, hash);
+            }), Promise.resolve(null));
         }
         lookupResourceWithoutHash(url) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 yield this.initialized;
                 const version = this.versions.get(this.latestHash);
                 return version.lookupResourceWithoutHash(url);
             });
         }
         previouslyCachedResources() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 yield this.initialized;
                 const version = this.versions.get(this.latestHash);
                 return version.previouslyCachedResources();
@@ -2577,11 +2568,11 @@
             };
         }
         notifyClientsAboutUpdate() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 yield this.initialized;
                 const clients = yield this.scope.clients.matchAll();
                 const next = this.versions.get(this.latestHash);
-                yield clients.reduce((previous, client) => __awaiter(this, void 0, void 0, function* () {
+                yield clients.reduce((previous, client) => __awaiter$5(this, void 0, void 0, function* () {
                     yield previous;
                     // Firstly, determine which version this client is on.
                     const version = this.clientVersionMap.get(client.id);
@@ -2605,13 +2596,13 @@
             });
         }
         broadcast(msg) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 const clients = yield this.scope.clients.matchAll();
                 clients.forEach(client => { client.postMessage(msg); });
             });
         }
         debugState() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 return {
                     state: DriverReadyState[this.state],
                     why: this.stateMessage,
@@ -2621,7 +2612,7 @@
             });
         }
         debugVersions() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 // Build list of versions.
                 return Array.from(this.versions.keys()).map(hash => {
                     const version = this.versions.get(hash);
@@ -2637,7 +2628,7 @@
             });
         }
         debugIdleState() {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 return {
                     queue: this.idle.taskDescriptions,
                     lastTrigger: this.idle.lastTrigger,
@@ -2646,7 +2637,7 @@
             });
         }
         safeFetch(req) {
-            return __awaiter(this, void 0, void 0, function* () {
+            return __awaiter$5(this, void 0, void 0, function* () {
                 try {
                     return yield this.scope.fetch(req);
                 }
@@ -2681,4 +2672,4 @@
     const driver = new Driver(scope, adapter, new CacheDatabase(scope, adapter));
 
 }());
-    //# sourceMappingURL=ngsw_worker.es6.js.map
+//# sourceMappingURL=ngsw_worker.es6.js.map
