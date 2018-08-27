@@ -36,4 +36,30 @@ declare namespace server {
         picUrl: string;
         order: number;
     }
+    interface entityBase<TKey> {
+        id: TKey;
+        name: string;
+        createTime: Date;
+        isDelete: boolean;
+    }
+    interface feedBack extends entityBase<number> {
+        openId: string;
+        phone: string;
+        content: string;
+        picUrl: string;
+        uploadTime: Date;
+        actionTime?: Date;
+        handler: string;
+        state: feedBackState;
+        type: feedBackType;
+    }
+    const enum feedBackState {
+        未处理,
+        已处理,
+        忽略,
+    }
+    const enum feedBackType {
+        投诉,
+        建议,
+    }
 }

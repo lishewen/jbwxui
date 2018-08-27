@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { PageModule } from './page/page.module';
 import { RestDataSource } from './auth/rest-data-source';
 import { WxauthComponent } from './wxauth/wxauth.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { WxauthComponent } from './wxauth/wxauth.component';
     DispatchComponent,
     IndexComponent,
     RechargeComponent,
-    WxauthComponent
+    WxauthComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
