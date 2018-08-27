@@ -28,6 +28,12 @@ declare namespace models {
         sent: Date;
         message: string
     }
+    export interface JsSdkUiPackage {
+        appId: string;
+        timestamp: string;
+        nonceStr: string;
+        signature: string;
+    }
 }
 declare namespace server {
     interface 首页海报 {
@@ -61,5 +67,8 @@ declare namespace server {
     const enum feedBackType {
         投诉,
         建议,
+    }
+    interface jSSDKPostModel {
+        originalUrl: string;
     }
 }

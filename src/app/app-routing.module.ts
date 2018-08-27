@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'wxauth', component: WxauthComponent },
   { path: 'dispatch', component: DispatchComponent, canActivate: [AuthGuard] },
   { path: 'recharge', component: RechargeComponent },
-  { path: 'feedback', component: FeedbackComponent },
+  { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
   { path: 'staticpages', loadChildren: './staticpages/staticpages.module#StaticpagesModule' }
 ];
 

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { WeUiModule } from 'ngx-weui';
+import { WeUiModule, JWeiXinModule } from 'ngx-weui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -36,7 +36,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     HttpClientModule,
     CoreModule,
     FormsModule,
-    PageModule
+    PageModule,
+    JWeiXinModule
   ],
   providers: [RestDataSource],
   bootstrap: [AppComponent]
