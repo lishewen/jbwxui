@@ -11,8 +11,11 @@ declare const wx: any;
 })
 export class WXService {
   JSSDKApiUrl = 'https://wx.wzjbbus.com/api/home/GetJSSDKConfig';
-
-  constructor(private wxService: JWeiXinService, private http: HttpClient) { }
+  mywx: any;
+  
+  constructor(private wxService: JWeiXinService, private http: HttpClient) {
+    this.mywx = wx;
+  }
 
   config(originalUrl: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
@@ -23,6 +26,8 @@ export class WXService {
         }
 
         wx.ready(() => {
+          wx.hideAllNonBaseMenuItem();
+
           resolve();
         });
 

@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WXService } from '../wx.service';
-import { ToptipsService, DialogComponent, DialogConfig, DialogService } from 'ngx-weui';
+import { ToptipsService, DialogConfig, DialogService } from 'ngx-weui';
 import { FeedbackService } from './feedback.service';
 import { RestDataSource } from '../auth/rest-data-source';
 
@@ -14,7 +14,6 @@ export class FeedbackComponent implements OnInit {
   model: server.feedBack;
   url = 'https://www.wzjbbus.com/feedback';
   status: string;
-  @ViewChild('ios') iosAS: DialogComponent;
   private DEFCONFIG: DialogConfig = <DialogConfig>{
     title: '提示',
     content: '感谢您的反馈！',
@@ -44,6 +43,28 @@ export class FeedbackComponent implements OnInit {
   private verify() {
     if (!this.model.content)
       this.srv['warn']('请输入内容');
+  }
+
+  uploadImage() {
+    this.wxService.mywx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: res => {
+        let localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+        this.wxService.mywx.uploadImage({
+          localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+          isShowProgressTips: 1,// 默认为1，显示进度提示
+          success: ret => {
+            let serverId = ret.serverId; // 返回图片的服务器端ID
+            this.feedbackService.uploadFileWeixin(serverId).subscribe(data => {
+              this.model.picUrl = data.path;
+              this.srv['success']('图片上传成功！');
+            });
+          }
+        });
+      }
+    });
   }
 
   formsubmit() {

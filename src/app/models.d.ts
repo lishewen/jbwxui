@@ -71,4 +71,11 @@ declare namespace server {
     interface jSSDKPostModel {
         originalUrl: string;
     }
+    interface weUIUploadFileResult {
+        size: number;
+        path: string;
+        name: string;
+        type: string;
+        extName: string;
+    }
 }

@@ -1,4 +1,4 @@
-<Page [ngClass]="'article'" [title]="'投诉与建议'" [subTitle]="''" [spacing]="false">
+<Page [ngClass]="'article'" [title]="'投诉与建议'" [subTitle]="status" [spacing]="false">
   <div class="weui-cells">
     <div class="weui-cell">
       <div class="weui-cell__bd">
@@ -47,7 +47,7 @@
           <div class="weui-uploader__bd">
             <ul class="weui-uploader__files" id="uploaderFiles"></ul>
             <div class="weui-uploader__input-box">
-              <button id="imgbtn" class="weui-uploader__input" type="button"></button>
+              <button id="imgbtn" class="weui-uploader__input" type="button" (click)="uploadImage"></button>
             </div>
           </div>
         </div>
