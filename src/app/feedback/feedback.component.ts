@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { WXService } from '../wx.service';
+import { ToptipsService, DialogComponent, DialogConfig, DialogService } from 'ngx-weui';
+import { FeedbackService } from './feedback.service';
+import { RestDataSource } from '../auth/rest-data-source';
 
 @Component({
   selector: 'app-feedback',
@@ -11,8 +14,19 @@ export class FeedbackComponent implements OnInit {
   model: server.feedBack;
   url = 'https://www.wzjbbus.com/feedback';
   status: string;
+  @ViewChild('ios') iosAS: DialogComponent;
+  private DEFCONFIG: DialogConfig = <DialogConfig>{
+    title: '提示',
+    content: '感谢您的反馈！',
+    confirm: '确定'
+  };
+  config: DialogConfig = {};
 
-  constructor(private wxService: WXService) { }
+  constructor(private wxService: WXService,
+    private srv: ToptipsService,
+    private dsrv: DialogService,
+    private feedbackService: FeedbackService,
+    private rest: RestDataSource) { }
 
   ngOnInit() {
     this.model = new Object as server.feedBack;
@@ -27,4 +41,26 @@ export class FeedbackComponent implements OnInit {
       });
   }
 
+  private verify() {
+    if (!this.model.content)
+      this.srv['warn']('请输入内容');
+  }
+
+  formsubmit() {
+    this.verify();
+
+    this.model.openId = this.rest.user.openid;
+
+    this.feedbackService.postFeedback(this.model).subscribe(res => {
+      if (res.ok) {
+        this.config = Object.assign({}, this.DEFCONFIG, <DialogConfig>{
+          skin: 'ios',
+          content: '感谢您的反馈！'
+        });
+        this.dsrv.show(this.config).subscribe(ret => {
+          this.model = new Object as server.feedBack;
+        });
+      }
+    });
+  }
 }
