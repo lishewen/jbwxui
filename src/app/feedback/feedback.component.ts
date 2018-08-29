@@ -13,7 +13,7 @@ export class FeedbackComponent implements OnInit {
   radio = [{ id: 0, name: '投诉' }, { id: 1, name: '建议' }];
   model: server.feedBack;
   url = 'https://www.wzjbbus.com/feedback';
-  status: string;
+  status: string = '';
   private DEFCONFIG: DialogConfig = <DialogConfig>{
     title: '提示',
     content: '感谢您的反馈！',
@@ -40,9 +40,18 @@ export class FeedbackComponent implements OnInit {
       });
   }
 
-  private verify() {
-    if (!this.model.content)
+  private verify(): boolean {
+    if (!this.model.content) {
       this.srv['warn']('请输入内容');
+      return false;
+    }
+
+    if (!this.model.phone && this.status == '') {
+      this.srv['warn']('请输入联系电话');
+      return false;
+    }
+
+    return true;
   }
 
   uploadImage() {
@@ -68,7 +77,8 @@ export class FeedbackComponent implements OnInit {
   }
 
   formsubmit() {
-    this.verify();
+    if (!this.verify())
+      return;
 
     this.model.openId = this.rest.user.openid;
 
