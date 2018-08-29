@@ -39,8 +39,8 @@
       </a>
     </div>
   </div>
-  <div class="weui-cells__title">图片上传</div>
-  <div class="weui-cells" id="uploader">
+  <div class="weui-cells__title" *ngIf="status!=''">图片上传</div>
+  <div class="weui-cells" id="uploader" *ngIf="status!=''">
     <div class="weui-cell">
       <div class="weui-cell__bd">
         <div class="weui-uploader">
