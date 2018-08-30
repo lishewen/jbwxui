@@ -15,25 +15,13 @@ export class WXService {
 
   constructor(private wxService: JWeiXinService, private http: HttpClient) { }
 
-  config(originalUrl: string): Promise<boolean> {
+  config(originalUrl: string, jsApiList: string[]): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.wxService.get().then(res => {
         if (!res) {
           reject('jweixin.js 加载失败');
           return;
         }
-
-        this.mywx = wx;
-
-        wx.ready(() => {
-          wx.hideAllNonBaseMenuItem();
-
-          resolve();
-        });
-
-        wx.error(() => {
-          reject('config 注册失败');
-        });
 
         let body: server.jSSDKPostModel = { originalUrl }
         this.http.post<models.JsSdkUiPackage>(this.JSSDKApiUrl, body)
@@ -48,8 +36,23 @@ export class WXService {
               reject('jsapi 获取失败');
               return;
             }
+
+            ret.jsApiList = jsApiList;
+
             wx.config(ret);
           });
+
+        wx.ready(() => {
+          wx.hideAllNonBaseMenuItem();
+
+          this.mywx = wx;
+          
+          resolve();
+        });
+
+        wx.error(() => {
+          reject('config 注册失败');
+        });
       });
     });
   }

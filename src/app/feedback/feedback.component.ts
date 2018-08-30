@@ -20,6 +20,7 @@ export class FeedbackComponent implements OnInit {
     confirm: '确定'
   };
   config: DialogConfig = {};
+  jsApiList: string[] = ['hideAllNonBaseMenuItem', 'chooseImage', 'uploadImage'];
 
   constructor(private wxService: WXService,
     private srv: ToptipsService,
@@ -31,7 +32,7 @@ export class FeedbackComponent implements OnInit {
     this.model = new Object as server.feedBack;
     this.model.type = server.feedBackType.投诉;
 
-    this.wxService.config(this.url)
+    this.wxService.config(this.url, this.jsApiList)
       .then(() => {
         // 其它操作，可以确保注册成功以后才有效
         this.status = '注册成功';

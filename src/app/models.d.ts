@@ -33,6 +33,7 @@ declare namespace models {
         timestamp: string;
         nonceStr: string;
         signature: string;
+        jsApiList: string[];
     }
 }
 declare namespace server {
