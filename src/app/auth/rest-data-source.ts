@@ -8,7 +8,7 @@ import { environment } from "src/environments/environment";
 export class RestDataSource {
     baseUrl: string;
     auth_token: string;
-    user: models.OAuthAccessTokenResult;
+    openid: string;
 
     constructor(private http: HttpClient) {
         this.baseUrl = "https://wx.wzjbbus.com/";
@@ -21,8 +21,7 @@ export class RestDataSource {
     authenticate(code: string): Observable<boolean> {
         return this.http.get(this.baseUrl + 'api/Home/AuthToken/' + code).pipe(
             map((res: models.OAuthAccessTokenResult) => {
-                this.user = res;
-                this.auth_token = res.access_token;
+                this.openid = res.openid;
                 return res.errcode == 0;
             })
         );
@@ -30,5 +29,9 @@ export class RestDataSource {
 
     get AuthToken(): string {
         return this.auth_token;
+    }
+
+    get OpenId(): string {
+        return this.openid;
     }
 }

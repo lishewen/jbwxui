@@ -81,7 +81,7 @@ export class FeedbackComponent implements OnInit {
     if (!this.verify())
       return;
 
-    this.model.openId = this.rest.user.openid;
+    this.model.openId = this.rest.OpenId;
 
     this.feedbackService.postFeedback(this.model).subscribe(res => {
       if (res.ok) {

@@ -26,6 +26,7 @@ export class WxauthComponent implements OnInit {
         if (code) { // code 存在，去服务端交换 token
           authservice.authenticate(code).subscribe(res => {
             if (res) {
+              window.localStorage.setItem(authservice.env.storageName.OpenId, datasource.openid);
               window.localStorage.setItem(authservice.env.storageName.auth_token, datasource.auth_token);
               window.localStorage.setItem(authservice.env.storageName.tokenCreateAt, new Date().getTime().toString());
 
