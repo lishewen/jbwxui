@@ -21,6 +21,7 @@ export class RestDataSource {
     authenticate(code: string): Observable<boolean> {
         return this.http.get(this.baseUrl + 'api/Home/AuthToken/' + code).pipe(
             map((res: models.OAuthAccessTokenResult) => {
+                this.auth_token = res.access_token;
                 this.openid = res.openid;
                 return res.errcode == 0;
             })
