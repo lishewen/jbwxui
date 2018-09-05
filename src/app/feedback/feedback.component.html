@@ -45,7 +45,10 @@
       <div class="weui-cell__bd">
         <div class="weui-uploader">
           <div class="weui-uploader__bd">
-            <ul class="weui-uploader__files" id="uploaderFiles"></ul>
+            <ul class="weui-uploader__files" id="uploaderFiles">
+              <li class="weui-uploader__file" *ngIf="model.picUrl" [weui-thumb]="model.picUrl">
+              </li>
+            </ul>
             <div class="weui-uploader__input-box">
               <button id="imgbtn" class="weui-uploader__input" type="button" (click)="uploadImage()"></button>
             </div>
