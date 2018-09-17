@@ -25,8 +25,8 @@
   <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea class="weui-textarea" placeholder="请输入文字描述" rows="5" [(ngModel)]="model.content" name="content" weui-textarea weui-cn="1"
-          maxlength="300"></textarea>
+        <textarea class="weui-textarea" placeholder="请输入文字描述" rows="5" [(ngModel)]="model.content" name="content"
+          weui-textarea weui-cn="1" maxlength="300"></textarea>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@
               </li>
             </ul>
             <div class="weui-uploader__input-box">
-              <button id="imgbtn" class="weui-uploader__input" type="button" (click)="uploadImage()"></button>
+              <button id="imgbtn" class="weui-uploader__input" type="button" (click)="uploadImage()" [disabled]="disabled"></button>
             </div>
           </div>
         </div>
@@ -66,6 +66,6 @@
     </div>
   </div>
   <div class="weui-btn-area">
-    <button class="weui-btn weui-btn_primary" type="button" (click)="formsubmit()">提交</button>
+    <button weui-button (click)="formsubmit()" [weui-loading]="loading" [disabled]="disabled">提交</button>
   </div>
 </Page>

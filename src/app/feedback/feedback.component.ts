@@ -21,6 +21,8 @@ export class FeedbackComponent implements OnInit {
   };
   config: DialogConfig = {};
   jsApiList: string[] = ['hideAllNonBaseMenuItem', 'chooseImage', 'uploadImage'];
+  disabled: boolean = false;
+  loading: boolean = false;
 
   constructor(private wxService: WXService,
     private srv: ToptipsService,
@@ -83,6 +85,9 @@ export class FeedbackComponent implements OnInit {
 
     this.model.openId = this.rest.OpenId;
 
+    this.loading = true;
+    this.disabled = true;
+
     this.feedbackService.postFeedback(this.model).subscribe(res => {
       if (res.ok) {
         this.config = Object.assign({}, this.DEFCONFIG, <DialogConfig>{
@@ -93,6 +98,9 @@ export class FeedbackComponent implements OnInit {
           this.model = new Object as server.feedBack;
         });
       }
+
+      this.loading = false;
+      this.disabled = false;
     });
   }
 }
