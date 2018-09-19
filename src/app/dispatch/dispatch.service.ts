@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DispatchService {
-  dispatchApiUrl = 'https://wx.wzjbbus.com/api/dispatch/';
+  dispatchApiUrl = 'https://api.wzjbbus.com/api/dispatch/';
 
   constructor(private http: HttpClient) { }
 

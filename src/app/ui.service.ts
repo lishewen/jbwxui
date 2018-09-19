@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UiService {
-  homeposterApiUrl = 'https://wx.wzjbbus.com/api/ui/gethomeposter';
+  homeposterApiUrl = 'https://api.wzjbbus.com/api/ui/gethomeposter';
 
   constructor(private http: HttpClient) { }
 
