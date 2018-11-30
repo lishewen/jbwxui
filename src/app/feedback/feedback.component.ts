@@ -54,6 +54,11 @@ export class FeedbackComponent implements OnInit {
       return false;
     }
 
+    if (this.model.phone && this.model.phone.length != 11) {
+      this.srv['warn']('请输入正确的手机号');
+      return false;
+    }
+
     return true;
   }
 
