@@ -17,8 +17,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (environment.production) {
       if (!this.auth.authenticated) {
-        window.localStorage.setItem(this.auth.env.storageName.fullPath, '/' + next.url[0].path);
-
+        window.localStorage.setItem(this.auth.env.storageName.fullPath, '/' + next.url.join('/'));
         this.router.navigateByUrl("/wxauth")
         return false;
       }
