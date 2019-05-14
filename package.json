@@ -5,8 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -18,28 +17,28 @@
     "@angular/http": "^7.2.15",
     "@angular/platform-browser": "^7.2.15",
     "@angular/platform-browser-dynamic": "^7.2.15",
-    "@angular/pwa": "^0.13.8",
+    "@angular/pwa": "^0.13.9",
     "@angular/router": "^7.2.15",
     "@angular/service-worker": "^7.2.15",
     "@aspnet/signalr": "^1.1.4",
     "core-js": "^2.6.5",
-    "ngx-weui": "^7.0.0",
+    "ngx-weui": "^7.1.0-rc.1",
     "rxjs": "^6.5.2",
     "swiper": "^4.5.0",
-    "weui": "^1.1.3",
+    "weui": "^2.0.0",
+    "tslib": "^1.9.0",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.8",
+    "@angular-devkit/build-angular": "^0.13.9",
     "@angular/cli": "7.3.9",
     "@angular/compiler-cli": "^7.2.15",
     "@angular/language-service": "^7.2.15",
     "@types/node": "~8.9.4",
     "@types/swiper": "^4.4.2",
     "codelyzer": "^4.5.0",
-    "protractor": "^5.4.2",
-    "ts-node": "~5.0.1",
-    "tslint": "~5.9.1",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
     "typescript": "~3.2.4"
   }
 }

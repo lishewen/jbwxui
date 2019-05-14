@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { WeUiModule } from 'ngx-weui';
+import { WeUiModule, ToptipsService } from 'ngx-weui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -29,7 +29,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
   ],
   imports: [
     BrowserModule,
-    WeUiModule.forRoot(),
+    WeUiModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('/ngsw-worker-polyfill.js', { enabled: environment.production }),
     AppRoutingModule,
@@ -38,7 +38,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     FormsModule,
     PageModule
   ],
-  providers: [RestDataSource],
+  providers: [RestDataSource, ToptipsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
