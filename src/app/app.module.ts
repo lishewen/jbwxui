@@ -38,7 +38,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     FormsModule,
     PageModule
   ],
-  providers: [RestDataSource, ToptipsService],
+  providers: [RestDataSource],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
