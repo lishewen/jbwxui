@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'dispatch', component: DispatchComponent, canActivate: [AuthGuard] },
   { path: 'recharge', component: RechargeComponent },
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
-  { path: 'staticpages', loadChildren: './staticpages/staticpages.module#StaticpagesModule' }
+  { path: 'staticpages', loadChildren: () => import('./staticpages/staticpages.module').then(m => m.StaticpagesModule) }
 ];
 
 @NgModule({
