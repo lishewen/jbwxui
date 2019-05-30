@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { PhoneComponent } from './phone/phone.component';
 import { PageModule } from '../page/page.module';
+import { RoutelistComponent } from './routelist/routelist.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { PageModule } from '../page/page.module';
     ContactComponent,
     JobsComponent,
     PhoneComponent,
-    DisclaimerComponent
+    DisclaimerComponent,
+    RoutelistComponent
   ]
 })
 export class StaticpagesModule { }
