@@ -23,6 +23,7 @@ export class FeedbackComponent implements OnInit {
   jsApiList: string[] = ['hideAllNonBaseMenuItem', 'chooseImage', 'uploadImage'];
   disabled: boolean = false;
   loading: boolean = false;
+  badMsgs: string[] = ['你妈', '我操', '我他妈', '臭逼', '操你']
 
   constructor(private wxService: WXService,
     private srv: ToptipsService,
@@ -43,9 +44,26 @@ export class FeedbackComponent implements OnInit {
       });
   }
 
+  /**
+   * 敏感词检测
+   * @param content 内容
+   */
+  private msgSecCheck(content: string): boolean {
+    this.badMsgs.forEach(msg => {
+      if (content.indexOf(msg) > -1)
+        return true
+    });
+    return false
+  }
+
   private verify(): boolean {
     if (!this.model.content) {
       this.srv['warn']('请输入内容');
+      return false;
+    }
+
+    if (this.msgSecCheck(this.model.content)) {
+      this.srv['warn']('请您使用文明用语！');
       return false;
     }
 
