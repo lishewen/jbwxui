@@ -11,7 +11,8 @@ export class AppComponent {
   title = 'app';
 
   constructor(private srv: ToptipsService, private signalRService: SignalRService) {
-    this.subscribeToEvents();
+    if (window.navigator.userAgent.indexOf('miniProgram') < 0)
+      this.subscribeToEvents();
   }
 
   private subscribeToEvents(): void {
