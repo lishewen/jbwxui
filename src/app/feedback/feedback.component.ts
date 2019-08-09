@@ -13,7 +13,7 @@ export class FeedbackComponent implements OnInit {
   radio = [{ id: 0, name: '投诉' }, { id: 1, name: '建议' }];
   model: server.feedBack;
   url = 'https://www.wzjbbus.com/feedback';
-  status: string = '';
+  status = '';
   private DEFCONFIG: DialogConfig = <DialogConfig>{
     title: '提示',
     content: '感谢您的反馈！',
@@ -21,9 +21,9 @@ export class FeedbackComponent implements OnInit {
   };
   config: DialogConfig = {};
   jsApiList: string[] = ['hideAllNonBaseMenuItem', 'chooseImage', 'uploadImage'];
-  disabled: boolean = false;
-  loading: boolean = false;
-  badMsgs: string[] = ['你妈', '我操', '我他妈', '臭逼', '操你']
+  disabled = false;
+  loading = false;
+  badMsgs: string[] = ['你妈', '我操', '我他妈', '臭逼', '操你', '草', '艹'];
 
   constructor(private wxService: WXService,
     private srv: ToptipsService,
@@ -40,7 +40,7 @@ export class FeedbackComponent implements OnInit {
         // 其它操作，可以确保注册成功以后才有效
         this.status = '注册成功';
       }).catch((err: string) => {
-        this.status = `注册失败，原因：${err}`
+        this.status = `注册失败，原因：${err}`;
       });
   }
 
@@ -50,10 +50,11 @@ export class FeedbackComponent implements OnInit {
    */
   private msgSecCheck(content: string): boolean {
     this.badMsgs.forEach(msg => {
-      if (content.indexOf(msg) > -1)
-        return true
+      if (content.indexOf(msg) > -1) {
+        return true;
+      }
     });
-    return false
+    return false;
   }
 
   private verify(): boolean {
@@ -67,12 +68,12 @@ export class FeedbackComponent implements OnInit {
       return false;
     }
 
-    if (!this.model.phone && this.status == '') {
+    if (!this.model.phone && this.status === '') {
       this.srv['warn']('请输入联系电话');
       return false;
     }
 
-    if (this.model.phone && this.model.phone.length != 11) {
+    if (this.model.phone && this.model.phone.length !== 11) {
       this.srv['warn']('请输入正确的手机号');
       return false;
     }
@@ -85,13 +86,13 @@ export class FeedbackComponent implements OnInit {
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: res => {
-        let localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+      success: (res: { localIds: any; }) => {
+        const localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
         this.wxService.mywx.uploadImage({
           localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
-          isShowProgressTips: 1,// 默认为1，显示进度提示
-          success: ret => {
-            let serverId = ret.serverId; // 返回图片的服务器端ID
+          isShowProgressTips: 1, // 默认为1，显示进度提示
+          success: (ret: { serverId: any; }) => {
+            const serverId = ret.serverId; // 返回图片的服务器端ID
             this.feedbackService.uploadFileWeixin(serverId).subscribe(data => {
               this.model.picUrl = data.path;
               this.srv['success']('图片上传成功！');
@@ -103,8 +104,9 @@ export class FeedbackComponent implements OnInit {
   }
 
   formsubmit() {
-    if (!this.verify())
+    if (!this.verify()) {
       return;
+    }
 
     this.model.openId = this.rest.OpenId;
 
