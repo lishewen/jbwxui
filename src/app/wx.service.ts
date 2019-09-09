@@ -23,11 +23,12 @@ export class WXService {
           return;
         }
 
-        let body: server.jSSDKPostModel = { originalUrl }
+        const body: server.jSSDKPostModel = { originalUrl };
         this.http.post<models.JsSdkUiPackage>(this.JSSDKApiUrl, body)
           .pipe(
             catchError(error => {
               reject('无法获取签名数据');
+              // tslint:disable-next-line: deprecation
               return Observable.throw('error');
             }),
           )
@@ -46,7 +47,7 @@ export class WXService {
           wx.hideAllNonBaseMenuItem();
 
           this.mywx = wx;
-          
+
           resolve();
         });
 

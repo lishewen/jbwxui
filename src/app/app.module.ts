@@ -7,7 +7,7 @@ import { WeUiModule } from 'ngx-weui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module'
+import { AppRoutingModule } from './app-routing.module';
 import { DispatchComponent } from './dispatch/dispatch.component';
 import { CoreModule } from './core/core.module';
 import { IndexComponent } from './index/index.component';
