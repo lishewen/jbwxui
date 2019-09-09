@@ -1,6 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'Page',
     template: `
     <div class="page__hd">
@@ -24,7 +25,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 export class PageComponent {
     @Input() title: string;
     @Input() subTitle: string;
-    @Input() spacing: boolean = true;
-    @Input() ftBottom: boolean = false;
-    @Input() noBottom: boolean = false;
+    @Input() spacing = true;
+    @Input() ftBottom = false;
+    @Input() noBottom = false;
 }

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DispatchService } from './dispatch.service';
+import { DispatchService } from '../dispatch.service';
 
 @Component({
-  selector: 'app-dispatch',
-  templateUrl: './dispatch.component.html',
-  styleUrls: ['./dispatch.component.less']
+  selector: 'app-buslist',
+  templateUrl: './buslist.component.html',
+  styleUrls: ['./buslist.component.less']
 })
-export class DispatchComponent implements OnInit {
+export class BusListComponent implements OnInit {
   list: models.调度汇总[] = [];
   private data: models.调度汇总[] = [];
 

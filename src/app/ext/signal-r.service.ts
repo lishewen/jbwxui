@@ -37,7 +37,7 @@ export class SignalRService {
   }
 
   private registerOnServerEvents(): void {
-    this.hubConnection.on('Send', (data: any) => {
+    this.hubConnection.on('Send', (data: models.ChatMessage) => {
       this.messageReceived.next(data);
     });
   }
