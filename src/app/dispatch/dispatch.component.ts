@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DispatchService } from './dispatch.service';
-import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-dispatch',
@@ -23,9 +22,13 @@ export class DispatchComponent implements OnInit {
   }
   onSearch(str: string) {
     this.list = this.data.filter((w: models.调度汇总) =>
+      // tslint:disable-next-line: no-bitwise
       ~w.onBoardid.toString().indexOf(str)
+      // tslint:disable-next-line: no-bitwise
       || ~w.name.indexOf(str)
+      // tslint:disable-next-line: no-bitwise
       || ~w.lineName.indexOf(str)
+      // tslint:disable-next-line: no-bitwise
       || (w.stationName != null && ~w.stationName.indexOf(str)));
   }
 }
