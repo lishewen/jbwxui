@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { CONFIGURATION } from '../shared/app.constants';
 
 @Injectable({
@@ -20,6 +20,7 @@ export class SignalRService {
   private createConnection() {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl(CONFIGURATION.baseUrls.server + 'testmessages')
+      .withAutomaticReconnect()
       .build();
   }
 
