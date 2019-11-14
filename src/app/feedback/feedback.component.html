@@ -16,7 +16,8 @@
         <p>{{i.name}}</p>
       </div>
       <div class="weui-cell__ft">
-        <input type="radio" class="weui-check" [(ngModel)]="model.type" name="type" [value]="i.id" id="radio-{{i.id}}" />
+        <input type="radio" class="weui-check" [(ngModel)]="model.type" name="type" [value]="i.id"
+          id="radio-{{i.id}}" />
         <span class="weui-icon-checked"></span>
       </div>
     </label>
@@ -25,8 +26,8 @@
   <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea class="weui-textarea" placeholder="请输入文字描述" rows="5" [(ngModel)]="model.content" name="content"
-          weui-textarea weui-cn="1" maxlength="300"></textarea>
+        <textarea class="weui-textarea" placeholder="请输入文字描述，最好能写清楚时间、车号、线路、行驶方向等相关信息，方便工作人员核实状况" rows="5"
+          [(ngModel)]="model.content" name="content" weui-textarea weui-cn="1" maxlength="300"></textarea>
       </div>
     </div>
   </div>
@@ -50,7 +51,8 @@
               </li>
             </ul>
             <div class="weui-uploader__input-box">
-              <button id="imgbtn" class="weui-uploader__input" type="button" (click)="uploadImage()" [disabled]="disabled"></button>
+              <button id="imgbtn" class="weui-uploader__input" type="button" (click)="uploadImage()"
+                [disabled]="disabled"></button>
             </div>
           </div>
         </div>
@@ -61,7 +63,8 @@
   <div class="weui-cells">
     <div class="weui-cell">
       <div class="weui-cell__bd weui-cell_primary">
-        <input class="weui-input" type="tel" placeholder="请输入你的联系方式" [(ngModel)]="model.phone" name="phone" weui-input="tel" />
+        <input class="weui-input" type="tel" placeholder="请输入你的联系方式" [(ngModel)]="model.phone" name="phone"
+          weui-input="tel" />
       </div>
     </div>
   </div>
