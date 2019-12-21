@@ -29,7 +29,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     BrowserModule,
     WeUiModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('/ngsw-worker-polyfill.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
