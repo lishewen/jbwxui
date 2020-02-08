@@ -3,6 +3,7 @@ import { WXService } from '../wx.service';
 import { ToptipsService, DialogConfig, DialogService } from 'ngx-weui';
 import { FeedbackService } from './feedback.service';
 import { RestDataSource } from '../auth/rest-data-source';
+import { server } from '../models';
 
 @Component({
   selector: 'app-feedback',

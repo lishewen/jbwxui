@@ -34,11 +34,11 @@
               }
             ],
             "styles": [
-              "./node_modules/swiper/dist/css/swiper.css",
+              "./node_modules/swiper/css/swiper.css",
               "src/styles.less"
             ],
             "scripts": [
-              "./node_modules/swiper/dist/js/swiper.js"
+              "./node_modules/swiper/js/swiper.js"
             ]
           },
           "configurations": {
@@ -100,5 +100,8 @@
       }
     }
   },
-  "defaultProject": "jbwxui"
+  "defaultProject": "jbwxui",
+  "cli": {
+    "analytics": "f87d4431-5c51-49a2-ac35-2fe20160678f"
+  }
 }

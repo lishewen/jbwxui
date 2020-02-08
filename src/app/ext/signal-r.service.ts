@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { CONFIGURATION } from '../shared/app.constants';
+import { models } from '../models';
 
 @Injectable({
   providedIn: 'root'

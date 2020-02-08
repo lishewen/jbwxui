@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UiService } from '../ui.service';
+import { server } from '../models';
 
 @Component({
   selector: 'app-index',

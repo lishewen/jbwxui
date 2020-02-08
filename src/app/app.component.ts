@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SignalRService } from './ext/signal-r.service';
 import { ToptipsService } from 'ngx-weui';
+import { models } from './models';
 
 @Component({
   selector: 'app-root',

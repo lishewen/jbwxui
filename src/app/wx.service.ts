@@ -3,6 +3,7 @@ import { JWeiXinService } from 'ngx-weui';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { models, server } from './models';
 
 declare const wx: any;
 

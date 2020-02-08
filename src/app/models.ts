@@ -1,4 +1,4 @@
-declare namespace models {
+export namespace models {
     export interface 调度汇总 {
         name: string;
         stationName: string;
@@ -36,20 +36,20 @@ declare namespace models {
         jsApiList: string[];
     }
 }
-declare namespace server {
-    interface 首页海报 {
+export namespace server {
+    export interface 首页海报 {
         id: number;
         url: string;
         picUrl: string;
         order: number;
     }
-    interface entityBase<TKey> {
+    export interface entityBase<TKey> {
         id: TKey;
         name: string;
         createTime: Date;
         isDelete: boolean;
     }
-    interface feedBack extends entityBase<number> {
+    export interface feedBack extends entityBase<number> {
         openId: string;
         phone: string;
         content: string;
@@ -65,14 +65,14 @@ declare namespace server {
         已处理,
         忽略,
     }
-    const enum feedBackType {
+    export enum feedBackType {
         投诉,
         建议,
     }
-    interface jSSDKPostModel {
+    export interface jSSDKPostModel {
         originalUrl: string;
     }
-    interface weUIUploadFileResult {
+    export interface weUIUploadFileResult {
         size: number;
         path: string;
         name: string;

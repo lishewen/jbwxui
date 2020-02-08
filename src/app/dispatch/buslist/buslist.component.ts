@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DispatchService } from '../dispatch.service';
+import { models } from 'src/app/models';
 
 @Component({
   selector: 'app-buslist',
