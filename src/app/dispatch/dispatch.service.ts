@@ -11,6 +11,10 @@ export class DispatchService {
   constructor(private http: HttpClient) { }
 
   getDispatch() {
-    return this.http.get<Array<models.调度汇总>>(this.dispatchApiUrl);
+    return this.http.get<Array<models.调度汇总>>(this.dispatchApiUrl, {
+      headers: {
+        'UserKey': 'E6CDD18F-863B-44FF-8CB3-F498D0F196E6'
+      }
+    });
   }
 }
