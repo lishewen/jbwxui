@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     if (environment.production) {
       if (!this.auth.authenticated) {
         window.localStorage.setItem(this.auth.env.storageName.fullPath, '/' + next.url.join('/'));
-        this.router.navigateByUrl("/wxauth")
+        this.router.navigateByUrl('/wxauth');
         return false;
       }
     }
