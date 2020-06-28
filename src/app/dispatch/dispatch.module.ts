@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BusListComponent } from './buslist/buslist.component';
 import { DispatchRoutingModule } from './dispatch-routing.module';
 import { PageModule } from '../page/page.module';
-import { WeUiModule } from 'ngx-weui';
+import { SearchBarModule } from 'ngx-weui/searchbar';
 
 
 
@@ -13,7 +13,7 @@ import { WeUiModule } from 'ngx-weui';
   ],
   imports: [
     CommonModule,
-    WeUiModule,
+    SearchBarModule,
     DispatchRoutingModule,
     PageModule
   ]
