@@ -10,10 +10,10 @@ export class AuthService {
   // 配置环境
   env = {
     url: {
-      spa: "https://www.wzjbbus.com",
+      spa: 'https://www.wzjbbus.com',
       api: 'https://wx.wzjbbus.com'
     },
-    wechatAppid: "wxca0ad6170fcea9ef",
+    wechatAppid: 'wxca0ad6170fcea9ef',
     storageName: {
       OpenId: 'OpenId', // 需要设置的 openid 名称
       auth_token: 'auth_token', // 需要设置的 token 名称
@@ -31,10 +31,10 @@ export class AuthService {
   }
 
   get authenticated(): boolean {
-    //本地存储有缓存，则使用缓存
-    let user_ticket = window.localStorage.getItem(this.env.storageName.auth_token);
-    let openid = window.localStorage.getItem(this.env.storageName.OpenId);
-    let tokenCreateAt: number = parseInt(window.localStorage.getItem(this.env.storageName.tokenCreateAt));
+    // 本地存储有缓存，则使用缓存
+    const user_ticket = window.localStorage.getItem(this.env.storageName.auth_token);
+    const openid = window.localStorage.getItem(this.env.storageName.OpenId);
+    const tokenCreateAt: number = parseInt(window.localStorage.getItem(this.env.storageName.tokenCreateAt), 10);
 
     if (user_ticket && new Date().getTime() - tokenCreateAt <= this.env.expira) {
       this.datasource.auth_token = user_ticket;
@@ -51,11 +51,11 @@ export class AuthService {
 
   // 获取 url 参数
   getParam(name: string, url?: string): string {
-    if (!url) url = window.location.href;
+    if (!url) { url = window.location.href; }
     name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'), results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+    const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'), results = regex.exec(url);
+    if (!results) { return null; }
+    if (!results[2]) { return ''; }
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 }

@@ -18,10 +18,10 @@ export class WxauthComponent implements OnInit {
 
     if (environment.production) {
       if (authservice.authenticated) { // token 存在也未过期，跳转到实际需要登录的页面
-        let fullPath = window.localStorage.getItem(authservice.env.storageName.fullPath);
+        const fullPath = window.localStorage.getItem(authservice.env.storageName.fullPath);
         this.router.navigateByUrl(fullPath || '/');
       } else { // token 不存在或过期，获取 token
-        let code = authservice.getParam('code');
+        const code = authservice.getParam('code');
 
         if (code) { // code 存在，去服务端交换 token
           authservice.authenticate(code).subscribe(res => {
@@ -30,10 +30,10 @@ export class WxauthComponent implements OnInit {
               window.localStorage.setItem(authservice.env.storageName.auth_token, datasource.auth_token);
               window.localStorage.setItem(authservice.env.storageName.tokenCreateAt, new Date().getTime().toString());
 
-              let fullPath = window.localStorage.getItem(authservice.env.storageName.fullPath);
+              const fullPath = window.localStorage.getItem(authservice.env.storageName.fullPath);
               this.router.navigateByUrl(fullPath || '/');
             }
-            this.errorMessage = "失败，请重试或咨询开发人员。"
+            this.errorMessage = '失败，请重试或咨询开发人员。';
           });
         } else { // code 不存在，跳转到获取 code 页面
           window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize' +
@@ -46,7 +46,7 @@ export class WxauthComponent implements OnInit {
         }
       }
     } else {
-      let fullPath = window.localStorage.getItem(authservice.env.storageName.fullPath);
+      const fullPath = window.localStorage.getItem(authservice.env.storageName.fullPath);
       this.router.navigateByUrl(fullPath || '/');
     }
   }
