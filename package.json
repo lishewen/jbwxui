@@ -20,7 +20,7 @@
     "@angular/service-worker": "10.0.3",
     "@microsoft/signalr": "^3.1.5",
     "core-js": "^3.6.5",
-    "ngx-weui": "^10.0.0",
+    "ngx-weui": "^10.0.1",
     "rxjs": "^6.6.0",
     "swiper": "^5.4.5",
     "tslib": "^2.0.0",
