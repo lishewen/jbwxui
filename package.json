@@ -21,7 +21,7 @@
     "@microsoft/signalr": "^3.1.5",
     "core-js": "^3.6.5",
     "ngx-weui": "^10.0.0",
-    "rxjs": "^6.5.5",
+    "rxjs": "^6.6.0",
     "swiper": "^5.4.5",
     "tslib": "^2.0.0",
     "weui": "^2.3.0",
@@ -32,11 +32,11 @@
     "@angular/cli": "10.0.1",
     "@angular/compiler-cli": "10.0.3",
     "@angular/language-service": "10.0.3",
-    "@types/node": "^12.12.47",
+    "@types/node": "^12.12.48",
     "@types/swiper": "^5.4.0",
     "codelyzer": "^5.1.2",
     "ts-node": "~8.10.2",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.5"
+    "typescript": "^3.9.6"
   }
 }
