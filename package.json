@@ -18,12 +18,12 @@
     "@angular/platform-browser-dynamic": "10.1.6",
     "@angular/router": "10.1.6",
     "@angular/service-worker": "10.1.6",
-    "@microsoft/signalr": "^3.1.5",
+    "@microsoft/signalr": "^3.1.9",
     "core-js": "^3.6.5",
     "ngx-weui": "^10.0.2",
     "rxjs": "^6.6.3",
     "swiper": "^5.4.5",
-    "tslib": "^2.0.0",
+    "tslib": "^2.0.3",
     "weui": "^2.3.0",
     "zone.js": "~0.10.3"
   },
@@ -32,11 +32,11 @@
     "@angular/cli": "10.1.7",
     "@angular/compiler-cli": "10.1.6",
     "@angular/language-service": "10.1.6",
-    "@types/node": "^12.12.48",
+    "@types/node": "^12.12.68",
     "@types/swiper": "^5.4.0",
     "codelyzer": "^5.1.2",
     "ts-node": "~8.10.2",
-    "tslint": "~6.1.0",
-    "typescript": "^3.9.6"
+    "tslint": "^6.1.3",
+    "typescript": "^3.9.7"
   }
 }
