@@ -21,7 +21,7 @@
     "@microsoft/signalr": "^3.1.5",
     "core-js": "^3.6.5",
     "ngx-weui": "^10.0.2",
-    "rxjs": "^6.6.0",
+    "rxjs": "^6.6.3",
     "swiper": "^5.4.5",
     "tslib": "^2.0.0",
     "weui": "^2.3.0",
