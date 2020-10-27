@@ -1,5 +1,8 @@
+// Copy from
+// https://github.com/Tencent/weui/blob/master/src/example/example.less
+/* stylelint-disable */
 /* reset */
-@import '~weui/src/style/base/theme/fn';
+@import "~weui/src/style/base/theme/fn";
 
 html,
 body {
@@ -8,7 +11,7 @@ body {
 }
 
 body {
-  font-family: -apple-system-font, 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: -apple-system-font, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 ul {
@@ -81,8 +84,8 @@ body,
 .page__ft {
   padding-top: 40px;
   padding-bottom: 10px;
-  padding-bottom: calc(10px ~'+ constant(safe-area-inset-bottom)');
-  padding-bottom: calc(10px ~'+ env(safe-area-inset-bottom)');
+  padding-bottom: calc(10px ~"+ constant(safe-area-inset-bottom)");
+  padding-bottom: calc(10px ~"+ env(safe-area-inset-bottom)");
   text-align: center;
   img {
     height: 19px;
@@ -113,9 +116,9 @@ body,
 
 .page {
   &.footer,
-  &[class*='form_'],
+  &[class*="form_"],
   &.gallery,
-  &[class*='msg_'],
+  &[class*="msg_"],
   &.navbar,
   &.tabbar {
     .page__ft {
@@ -236,8 +239,8 @@ body,
   }
 }
 
-[class^='form_'],
-[class*=' form_'] {
+[class^="form_"],
+[class*=" form_"] {
   &.page {
     padding: 0;
   }
@@ -336,7 +339,8 @@ body,
 }
 
 .page.layers {
-  @layerBaseTransform: translateX(15px) rotateX(45deg) rotateZ(10deg) skew(-15deg);
+  @layerBaseTransform: translateX(15px) rotateX(45deg) rotateZ(10deg)
+    skew(-15deg);
   @layerStartPos: 120px;
   @layerSpacing: 80px;
   @layerSmallStartPos: 140px;
@@ -424,7 +428,8 @@ body,
       transform: @layerBaseTransform translateZ(@layerStartPos - @layerSpacing);
 
       @media only screen and (max-width: 320px) {
-        transform: @layerBaseTransform translateZ(@layerSmallStartPos - @layerSmallSpacing);
+        transform: @layerBaseTransform
+          translateZ(@layerSmallStartPos - @layerSmallSpacing);
       }
     }
   }
@@ -432,10 +437,12 @@ body,
     z-index: 2;
     background-color: rgba(40, 187, 102, 0.5);
     &.j_transform {
-      transform: @layerBaseTransform translateZ(@layerStartPos - 2 * @layerSpacing);
+      transform: @layerBaseTransform
+        translateZ(@layerStartPos - 2 * @layerSpacing);
 
       @media only screen and (max-width: 320px) {
-        transform: @layerBaseTransform translateZ(@layerSmallStartPos - 2 * @layerSmallSpacing);
+        transform: @layerBaseTransform
+          translateZ(@layerSmallStartPos - 2 * @layerSmallSpacing);
       }
     }
     &.j_pic {
@@ -447,12 +454,17 @@ body,
     z-index: 1;
     background-color: var(--weui-BG-2);
     &.j_transform {
-      transform: @layerBaseTransform translateZ(@layerStartPos - 3 * @layerSpacing);
+      transform: @layerBaseTransform
+        translateZ(@layerStartPos - 3 * @layerSpacing);
 
       @media only screen and (max-width: 320px) {
-        transform: @layerBaseTransform translateZ(@layerSmallStartPos - 3 * @layerSmallSpacing);
+        transform: @layerBaseTransform
+          translateZ(@layerSmallStartPos - 3 * @layerSmallSpacing);
       }
     }
+    // &.j_pic {
+    //   // background-image: url(images/layers/content.png);
+    // }
   }
 }
 
@@ -515,7 +527,8 @@ body,
 // iphone x
 @supports (top: constant(safe-area-inset-top)) {
   .page {
-    padding: constant(safe-area-inset-top) constant(safe-area-inset-right) constant(safe-area-inset-bottom) constant(safe-area-inset-left);
+    padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
+      constant(safe-area-inset-bottom) constant(safe-area-inset-left);
     &.tabbar,
     &.navbar {
       padding-right: 0;
@@ -530,7 +543,8 @@ body,
 
 @supports (top: env(safe-area-inset-top)) {
   .page {
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
     &.tabbar,
     &.navbar,
     &.msg_success,

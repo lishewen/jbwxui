@@ -8,8 +8,8 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
         <h1 class="page__title" [innerHTML]="title"></h1>
         <p class="page__desc" [innerHTML]="subTitle"></p>
     </div>
-    <div class="page__bd" [ngClass]="{'page__bd_spacing': spacing}"><ng-content></ng-content></div>
-    <div class="page__ft" [ngClass]="{'j_bottom': ftBottom}" *ngIf="!noBottom">
+    <div class="page__bd" [ngClass]="{ page__bd_spacing: spacing }"><ng-content></ng-content></div>
+    <div class="page__ft" [ngClass]="{ j_bottom: ftBottom }" *ngIf="!noBottom">
         <ng-content select="[footer]"></ng-content>
     </div>
     <div footer class="weui-footer">
@@ -17,10 +17,11 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
     </div>
     `,
     host: {
-        'class': 'page'
+        '[class.page]': `true`,
+        '[class.js_show]': `true`,
     },
     styleUrls: ['./page.component.less'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 export class PageComponent {
     @Input() title: string;
