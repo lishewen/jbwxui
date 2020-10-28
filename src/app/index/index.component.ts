@@ -22,7 +22,6 @@ export class IndexComponent implements OnInit {
   constructor(private uiServuce: UiService) { }
 
   ngOnInit() {
-    this.uiServuce.getHomePoster()
-      .subscribe((data: Array<server.首页海报>) => this.list = data);
+    // this.uiServuce.getHomePoster().subscribe((data: Array<server.首页海报>) => this.list = data);
   }
 }

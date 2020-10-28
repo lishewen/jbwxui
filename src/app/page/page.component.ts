@@ -13,6 +13,9 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
         <ng-content select="[footer]"></ng-content>
     </div>
     <div footer class="weui-footer">
+        <p class="weui-footer__links">
+            <a href="https://beian.miit.gov.cn" class="weui-footer__link">桂ICP备18004339号</a>
+        </p>
         <p class="weui-footer__text">Copyright © 2020 梧州公交</p>
     </div>
     `,
