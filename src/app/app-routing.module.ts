@@ -19,7 +19,7 @@ const routes: Routes = [
 @NgModule({
   exports: [RouterModule],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })
   ],
   providers: [AuthGuard],
   declarations: []
