@@ -49,7 +49,7 @@ export class WXService {
 
           this.mywx = wx;
 
-          resolve();
+          resolve(true);
         });
 
         wx.error(() => {
