@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { JWeiXinService } from 'ngx-weui';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { models, server } from './models';
 
 declare const wx: any;
@@ -29,8 +29,7 @@ export class WXService {
           .pipe(
             catchError(error => {
               reject('无法获取签名数据');
-              // tslint:disable-next-line: deprecation
-              return Observable.throw('error');
+              return throwError(error);
             }),
           )
           .subscribe(ret => {
