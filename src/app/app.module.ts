@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { SwiperModule } from 'ngx-weui/swiper';
 import { ButtonModule } from 'ngx-weui/button';
@@ -17,6 +16,7 @@ import { PageModule } from './page/page.module';
 import { RestDataSource } from './auth/rest-data-source';
 import { WxauthComponent } from './wxauth/wxauth.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { WeUiModule } from 'ngx-weui';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     HttpClientModule,
     CoreModule,
     FormsModule,
-    PageModule
+    PageModule,
+    WeUiModule
   ],
   providers: [RestDataSource],
   bootstrap: [AppComponent]

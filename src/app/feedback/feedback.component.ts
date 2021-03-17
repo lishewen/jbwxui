@@ -24,7 +24,7 @@ export class FeedbackComponent implements OnInit {
   jsApiList: string[] = ['hideAllNonBaseMenuItem', 'chooseImage', 'uploadImage'];
   disabled = false;
   loading = false;
-  badMsgs: string[] = ['你妈', '我操', '我他妈', '臭逼', '操你', '草', '艹'];
+  badMsgs: string[] = ['你妈', '我操', '我他妈', '臭逼', '操你', '草', '艹', '啥比', '送灵'];
 
   constructor(private wxService: WXService,
     private srv: ToptipsService,
