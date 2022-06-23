@@ -16,7 +16,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
         <p class="weui-footer__links">
             <a href="https://beian.miit.gov.cn" class="weui-footer__link">桂ICP备18004339号</a>
         </p>
-        <p class="weui-footer__text">Copyright © 2021 梧州公交</p>
+        <p class="weui-footer__text">Copyright © 2022 梧州公交</p>
     </div>
     `,
     host: {
