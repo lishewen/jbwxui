@@ -33,11 +33,9 @@
               }
             ],
             "styles": [
-              "./node_modules/swiper/css/swiper.css",
               "src/styles.less"
             ],
             "scripts": [
-              "./node_modules/swiper/js/swiper.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,

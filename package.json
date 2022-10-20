@@ -22,7 +22,6 @@
     "core-js": "^3.25.5",
     "ngx-weui": "^10.0.2",
     "rxjs": "^6.6.7",
-    "swiper": "^8.4.4",
     "tslib": "^2.4.0",
     "weui": "^2.5.14",
     "zone.js": "^0.11.8"
@@ -33,7 +32,6 @@
     "@angular/compiler-cli": "14.2.7",
     "@angular/language-service": "14.2.7",
     "@types/node": "^12.20.55",
-    "@types/swiper": "^5.4.3",
     "codelyzer": "^6.0.2",
     "ts-node": "~8.10.2",
     "tslint": "^6.1.3",

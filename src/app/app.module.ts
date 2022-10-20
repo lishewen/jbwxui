@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { SwiperModule } from 'ngx-weui/swiper';
 import { ButtonModule } from 'ngx-weui/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -29,7 +28,6 @@ import { WeUiModule } from 'ngx-weui';
   imports: [
     BrowserModule,
     ButtonModule,
-    SwiperModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
