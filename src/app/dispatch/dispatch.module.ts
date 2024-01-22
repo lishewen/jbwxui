@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BusListComponent } from './buslist/buslist.component';
 import { DispatchRoutingModule } from './dispatch-routing.module';
 import { PageModule } from '../page/page.module';
-import { SearchBarModule } from 'ngx-weui/searchbar';
-
-
 
 @NgModule({
   declarations: [
@@ -13,7 +10,6 @@ import { SearchBarModule } from 'ngx-weui/searchbar';
   ],
   imports: [
     CommonModule,
-    SearchBarModule,
     DispatchRoutingModule,
     PageModule
   ]
